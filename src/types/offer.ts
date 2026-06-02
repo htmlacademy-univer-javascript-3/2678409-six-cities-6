@@ -1,3 +1,8 @@
+export type Location = {
+  latitude: number;
+  longitude: number;
+};
+
 export type Offer = {
   id: number;
   title: string;
@@ -19,5 +24,7 @@ export type Offer = {
   };
   city: {
     name: string;
+    location: Location;
   };
+  location: Location;
 };
