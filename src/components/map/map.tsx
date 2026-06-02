@@ -6,6 +6,7 @@ import { Offer, Location } from '../../types/offer';
 type MapProps = {
   offers: Offer[];
   city: Location;
+  className?: string;
 };
 
 const defaultIcon = L.icon({
@@ -14,7 +15,7 @@ const defaultIcon = L.icon({
   iconAnchor: [13, 39]
 });
 
-function Map({ offers, city }: MapProps): JSX.Element {
+function Map({ offers, city, className = 'cities__map map' }: MapProps): JSX.Element {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const mapRef = useRef<L.Map | null>(null);
 
@@ -53,7 +54,7 @@ function Map({ offers, city }: MapProps): JSX.Element {
     };
   }, [offers]);
 
-  return <div ref={containerRef} className="cities__map map" />;
+  return <div ref={containerRef} className={className} />;
 }
 
 export default Map;
