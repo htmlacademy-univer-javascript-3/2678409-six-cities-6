@@ -1,5 +1,6 @@
 import OffersList from '../../components/offers-list/offers-list';
-import { Offer } from '../../types/offer';
+import Map from '../../components/map/map';
+import { Offer, Location } from '../../types/offer';
 
 type MainPageProps = {
   placesCount: number;
@@ -7,6 +8,11 @@ type MainPageProps = {
 };
 
 function MainPage({ placesCount, offers }: MainPageProps): JSX.Element {
+  const cityCenter: Location = {
+    latitude: 52.37,
+    longitude: 4.90
+  };
+
   return (
     <div className="page page--gray page--main">
       <header className="header">
@@ -99,7 +105,7 @@ function MainPage({ placesCount, offers }: MainPageProps): JSX.Element {
               <OffersList offers={offers} />
             </section>
             <div className="cities__right-section">
-              <section className="cities__map map"></section>
+              <Map offers={offers} city={cityCenter} />
             </div>
           </div>
         </div>
