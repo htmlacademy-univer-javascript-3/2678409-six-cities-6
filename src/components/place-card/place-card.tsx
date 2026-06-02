@@ -3,15 +3,16 @@ import { Offer } from '../../types/offer';
 
 type PlaceCardProps = {
   offer: Offer;
+  block?: string;
   onHover?: (id: number | null) => void;
 };
 
-function PlaceCard({ offer, onHover }: PlaceCardProps): JSX.Element {
+function PlaceCard({ offer, block = 'cities', onHover }: PlaceCardProps): JSX.Element {
   const ratingWidth = (offer.rating / 5) * 100;
 
   return (
     <article
-      className="cities__card place-card"
+      className={`${block}__card place-card`}
       onMouseEnter={() => onHover?.(offer.id)}
       onMouseLeave={() => onHover?.(null)}
     >
@@ -20,7 +21,7 @@ function PlaceCard({ offer, onHover }: PlaceCardProps): JSX.Element {
           <span>Premium</span>
         </div>
       )}
-      <div className="cities__image-wrapper place-card__image-wrapper">
+      <div className={`${block}__image-wrapper place-card__image-wrapper`}>
         <Link to={`/offer/${offer.id}`}>
           <img className="place-card__image" src={offer.image} width="260" height="200" alt={offer.title} />
         </Link>
