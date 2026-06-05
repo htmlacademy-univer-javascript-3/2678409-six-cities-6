@@ -1,30 +1,34 @@
 export type Location = {
   latitude: number;
   longitude: number;
+  zoom: number;
 };
 
 export type Offer = {
-  id: number;
+  id: string;
   title: string;
   type: 'apartment' | 'room' | 'house' | 'hotel';
   price: number;
-  rating: number;
-  isPremium: boolean;
-  image: string;
-  isFavorite: boolean;
-  description: string;
-  images: string[];
-  bedrooms: number;
-  maxAdults: number;
-  amenities: string[];
-  host: {
-    name: string;
-    avatar: string;
-    isPro: boolean;
-  };
+  previewImage: string;
   city: {
     name: string;
     location: Location;
   };
   location: Location;
+  isFavorite: boolean;
+  isPremium: boolean;
+  rating: number;
+};
+
+export type DetailedOffer = Offer & {
+  description: string;
+  images: string[];
+  goods: string[];
+  bedrooms: number;
+  maxAdults: number;
+  host: {
+    isPro: boolean;
+    name: string;
+    avatarUrl: string;
+  };
 };

@@ -4,7 +4,7 @@ import { Offer } from '../../types/offer';
 type PlaceCardProps = {
   offer: Offer;
   block?: string;
-  onHover?: (id: number | null) => void;
+  onHover?: (id: string | null) => void;
 };
 
 function PlaceCard({ offer, block = 'cities', onHover }: PlaceCardProps): JSX.Element {
@@ -23,7 +23,7 @@ function PlaceCard({ offer, block = 'cities', onHover }: PlaceCardProps): JSX.El
       )}
       <div className={`${block}__image-wrapper place-card__image-wrapper`}>
         <Link to={`/offer/${offer.id}`}>
-          <img className="place-card__image" src={offer.image} width="260" height="200" alt={offer.title} />
+          <img className="place-card__image" src={offer.previewImage} width="260" height="200" alt={offer.title} />
         </Link>
       </div>
       <div className="place-card__info">
