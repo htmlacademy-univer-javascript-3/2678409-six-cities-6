@@ -5,20 +5,16 @@ import FavoritesPage from '../../pages/favorites-page/favorites-page';
 import OfferPage from '../../pages/offer-page/offer-page';
 import NotFoundPage from '../../pages/not-found-page/not-found-page';
 import PrivateRoute from '../private-route/private-route';
-import { Offer } from '../../types/offer';
+import { useAppSelector } from '../../hooks';
 
-type AppProps = {
-  placesCount: number;
-  offers: Offer[];
-};
-
-function App({ placesCount, offers }: AppProps): JSX.Element {
+function App(): JSX.Element {
   const isAuthorized = false;
+  const offers = useAppSelector((state) => state.offers);
 
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<MainPage placesCount={placesCount} offers={offers} />} />
+        <Route path="/" element={<MainPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route
           path="/favorites"
